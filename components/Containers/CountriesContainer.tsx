@@ -22,7 +22,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | null }) => {
       </div>
     );
   }
-  return <div>{content}</div>;
+  return <>{content}</>;
 };
 
 export default CountriesSection;
