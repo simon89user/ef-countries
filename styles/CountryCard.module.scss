@@ -1,0 +1,43 @@
+@import "./colors.module";
+
+.countryCard {
+  margin: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px grey;
+  font-size: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .imageWrapper {
+    height: 180px;
+    position: relative;
+  }
+  .detailsWrapper {
+    min-height: 180px;
+    padding: 1.5rem;
+    background-color: white;
+    .countryTitleWrapper {
+      margin-bottom: 0.6rem;
+      .countryTitle {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $darkFont !important;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .details {
+      p {
+        margin-bottom: 0;
+        color: $lightGrey;
+        .detailTitle {
+          font-weight: 600;
+          color: $darkFont;
+        }
+      }
+    }
+  }
+}
