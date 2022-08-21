@@ -1,13 +1,20 @@
-import React, { useRef } from "react";
+import React, { JSXElementConstructor, useRef } from "react";
 import styles from "../../styles/FiltersContainer.module.scss";
 
 const FiltersContainer = ({
   handleFilterSearch,
+  regions,
 }: {
-  handleFilterSearch: (query: string | null, type:string) => void;
+  handleFilterSearch: (query: string | null, type: string) => void;
+  regions: string[] | [];
 }) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const regionSelectRef = useRef<HTMLSelectElement>(null);
+  
+  let contentRegion: JSX.Element[] = [];
+  regions.forEach((region, index) => {
+    contentRegion.push(<option key={index} value={region}>{region}</option>);
+  });
 
   const handleChangeFilterInput = (type: string) => {
     type === "country"
@@ -46,9 +53,10 @@ const FiltersContainer = ({
                   aria-label="Select a region"
                   ref={regionSelectRef}
                 >
-                  <option disabled defaultValue={""}>Filter By Region</option>
-                  <option value="Africa">Africa</option>
-                  <option value="America">America</option>
+                  <>
+                    <option value="">Filter By Region</option>
+                    {contentRegion}
+                  </>
                 </select>
               </div>
             </div>

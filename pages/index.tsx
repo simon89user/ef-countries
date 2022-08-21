@@ -5,13 +5,18 @@ import CountriesContainer from "../components/Containers/CountriesContainer";
 import FiltersContainer from "../components/Containers/FiltersContainer";
 import { Country } from "../types/Country";
 
-const Home = ({ countries }: { countries: Country[] | [] }) => {
+const Home = ({
+  countries,
+  regions,
+}: {
+  countries: Country[] | [];
+  regions: string[] | [];
+}) => {
   const [countriesDisplayed, setCountriesDisplayed] = useState(countries);
-
   const handleFilterSearch = (query: string | null, type: string) => {
     if (!query) {
       return setCountriesDisplayed((prevState) => {
-        return countries ?? null;
+        return (prevState = countries ?? null);
       });
     }
 
@@ -28,8 +33,7 @@ const Home = ({ countries }: { countries: Country[] | [] }) => {
     }
 
     setCountriesDisplayed((prevState) => {
-    
-      return countriesFind ?? [];
+      return (prevState = countriesFind ?? []);
     });
   };
 
@@ -43,7 +47,10 @@ const Home = ({ countries }: { countries: Country[] | [] }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FiltersContainer handleFilterSearch={handleFilterSearch} />
+      <FiltersContainer
+        handleFilterSearch={handleFilterSearch}
+        regions={regions}
+      />
       <CountriesContainer countries={countriesDisplayed} />
     </>
   );
@@ -53,15 +60,25 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://restcountries.com/v2/all");
   if (response.ok) {
     const countries: Country[] = await response.json();
+
+    const regions: string[] = [];
+    countries.forEach((country) => {
+      if (!regions.includes(country.region)) {
+        regions.push(country.region);
+      }
+    });
+
     return {
       props: {
-        countries: countries,
+        countries,
+        regions,
       },
     };
   } else {
     return {
       props: {
-        countries: {},
+        countries: [],
+        regions: [],
       },
     };
   }
