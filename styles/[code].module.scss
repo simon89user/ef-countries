@@ -1,0 +1,52 @@
+.countryContainer {
+  padding-top: 4rem;
+  .imageContainer {
+    margin-right: 4rem;
+    .imageWrapper {
+      height:50vh;
+      width: 100%;
+      position:relative;
+      > div {
+        position: unset !important;
+      }
+      .image {
+        object-fit: contain;
+        width: 100% !important;
+        height: unset !important;
+      }
+    }
+  }
+
+  .informationContainer {
+    .titleWrapper {
+      margin-bottom: 1rem;
+      .title {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
+
+    .detailsWrapper {
+      .detail {
+        p {
+          margin: 0;
+          margin-bottom: 0.5rem;
+          .detailTitle {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .borderWrapper {
+      margin-top: 2rem;
+      .btnBorder {
+        box-shadow: 0px 0px 3px rgb(176, 176, 176);
+        margin-right: 1rem;
+        margin-bottom: .5rem;
+        border-radius: 0;
+        padding: .2rem 1rem;
+      }
+    }
+  }
+}
