@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What is EF countries?
+This is a web app to get a bunch of usefull informations about countries worldwide.
+
+Live demo is available at [EF COUNTRIES](https://ef-countries.vercel.app/)
+
+Made on framework [Next.js](https://nextjs.org/) with TypeScript and Sass modules.
 
 ## Getting Started
+First, install the dependancies with:
 
-First, run the development server:
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Tests
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This app is E2E tested with the help of Cypress. To use the Cypress GUI, run:
 
-## Learn More
+```bash
+npm run cypress:open
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Get to production
+Before production, you can check locally an optimized and minified version of your app, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is deployed on Vercel, at [EF Countries](https://ef-countries.vercel.app/)
+
+To deploy it to your own vercel cloud service, login on [VERCEL](https://vercel.com)) and import your github forked repository.
+
+To deploy, just push your commits, it would automatically launch the build and deploy.
