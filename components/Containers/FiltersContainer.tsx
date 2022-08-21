@@ -46,7 +46,7 @@ const FiltersContainer = ({
                   aria-label="Select a region"
                   ref={regionSelectRef}
                 >
-                  <option disabled selected>Filter By Region</option>
+                  <option disabled defaultValue={""}>Filter By Region</option>
                   <option value="Africa">Africa</option>
                   <option value="America">America</option>
                 </select>

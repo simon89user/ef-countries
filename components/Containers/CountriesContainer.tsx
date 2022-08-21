@@ -14,7 +14,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | null }) => {
       <div className="container-fluid">
         <div className="row">
           {countries.map((country) => (
-            <div className="col-12 col-lg-3">
+            <div key={country.alpha3Code} className="col-12 col-lg-3">
               <CountryCard country={country} />
             </div>
           ))}
