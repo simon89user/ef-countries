@@ -5,7 +5,7 @@ import CountriesContainer from "../components/Containers/CountriesContainer";
 import FiltersContainer from "../components/Containers/FiltersContainer";
 import { Country } from "../types/Country";
 
-const Home = ({ countries }: { countries: Country[] | null }) => {
+const Home = ({ countries }: { countries: Country[] | [] }) => {
   const [countriesDisplayed, setCountriesDisplayed] = useState(countries);
 
   const handleFilterSearch = (query: string | null, type: string) => {
@@ -27,8 +27,9 @@ const Home = ({ countries }: { countries: Country[] | null }) => {
       );
     }
 
-    return setCountriesDisplayed((prevState) => {
-      return countriesFind ?? null;
+    setCountriesDisplayed((prevState) => {
+    
+      return countriesFind ?? [];
     });
   };
 
