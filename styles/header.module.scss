@@ -1,0 +1,13 @@
+.navWrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @media (min-width: 992px) {
+    padding: 0.5rem 2rem;
+  }
+  background-color: white;
+  border-bottom: 2px solid lightgrey;
+  .icon {
+    margin-bottom: 0.2rem;
+    margin-right: 0.5rem;
+  }
+}

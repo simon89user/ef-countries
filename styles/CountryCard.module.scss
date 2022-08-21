@@ -16,12 +16,13 @@
     min-height: 180px;
     padding: 1.5rem;
     background-color: white;
+    
     .countryTitleWrapper {
       margin-bottom: 0.6rem;
       .countryTitle {
         font-size: 1.2rem;
         font-weight: 700;
-        color: $darkFont !important;
+        color: $darkFont;
         text-decoration: none;
         &:hover {
           text-decoration: underline;

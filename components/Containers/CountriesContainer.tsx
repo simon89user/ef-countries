@@ -51,9 +51,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
   }
 
   return (
-    <>
       <div className="container-fluid">{content}</div>
-    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import styles from "../../styles/BackNavigation.module.scss";
 
 const BackNavigation = () => {
   const router = useRouter();
@@ -7,12 +8,14 @@ const BackNavigation = () => {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <button
-            className="btn btn-outline-dark"
-            onClick={() => router.back()}
-          >
-            <FaLongArrowAltLeft /> Back
-          </button>
+          <div className={styles.btnWrapper}>
+            <button
+              className={styles.btnBack + " btn btn-outline-dark"}
+              onClick={() => router.back()}
+            >
+              <FaLongArrowAltLeft /> Back
+            </button>
+          </div>
         </div>
       </div>
     </div>

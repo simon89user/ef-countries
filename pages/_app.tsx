@@ -5,11 +5,9 @@ import "../styles/global.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <>
-        <Header />
-        <Component {...pageProps} />
-      </>
+    <ThemeProvider attribute="class">
+      <Header />
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }

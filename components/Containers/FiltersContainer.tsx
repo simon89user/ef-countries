@@ -43,7 +43,9 @@ const FiltersContainer = ({
           <div className={styles.filtersContainer}>
             <div className="row">
               <div className="col-lg-4">
-                <div className={styles.countryInput}>
+                <div
+                  className={styles.countryInput + " theming-bg-dark"}
+                >
                   <div className="input-group">
                     <span className={styles.iconDiv + " input-group-text"}>
                       <FaSearch />
@@ -62,7 +64,7 @@ const FiltersContainer = ({
               <div className="col-lg-3 offset-lg-5">
                 <select
                   onChange={() => handleChangeFilterInput("region")}
-                  className={styles.formSelect+" form-select"}
+                  className={styles.formSelect + " form-select"}
                   aria-label="Select a region"
                   ref={regionSelectRef}
                 >

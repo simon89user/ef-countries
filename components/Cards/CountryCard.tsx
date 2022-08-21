@@ -21,7 +21,7 @@ const CountryCard = ({
           src={country.flags.png}
         />
       </div>
-      <div className={styles.detailsWrapper}>
+      <div className={styles.detailsWrapper+" theming-bg-dark"}>
         <div className={styles.countryTitleWrapper}>
           <Link
             href={`/countries/${country.alpha3Code.toLowerCase()}`}

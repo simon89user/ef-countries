@@ -4,3 +4,29 @@
 body {
   background-color: $greyBg;
 }
+
+.dark {
+  body {
+    background-color: rgb(32 45 54) !important;
+    color: white !important;
+    a,
+    p,
+    span {
+      color: white !important;
+    }
+    .theming-bg-dark,
+    .form-select,
+    .input-group-text,
+    input {
+      box-shadow: none !important;
+      background-color: #2b3743 !important;
+      color: white;
+      border:none;
+    }
+
+    .btn-outline-dark {
+      color: white !important;
+      box-shadow: 0 2px 4px black;
+    }
+  }
+}

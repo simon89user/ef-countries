@@ -1,29 +1,35 @@
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { FaMoon } from "react-icons/fa";
+import styles from "../../styles/header.module.scss";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="container">
-      <Navbar>
-        <Container>
-          <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Button
-                className="btn btn-outline-dark"
-                onClick={()=>{theme === "light" ? setTheme("dark") : setTheme("light");}}
-              >
-                Dark Mode
-              </Button>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <div className={styles.navWrapper + " theming-bg-dark"}>
+      <nav className="navbar">
+        <div className="container-fluid">
+          <Link href="/" passHref>
+            <a className="navbar-brand">
+              <b>Where in the World?</b>
+            </a>
+          </Link>
+          <button
+            className={
+              theme === "light"
+                ? "btn btn-outline-dark"
+                : "btn btn-outline-light"
+            }
+            onClick={() => {
+              theme === "light" ? setTheme("dark") : setTheme("light");
+            }}
+          >
+            <FaMoon className={styles.icon} />
+            Dark Mode
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };

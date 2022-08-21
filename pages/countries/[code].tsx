@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import { GetStaticProps } from "next";
 import BackNavigation from "../../components/layout/BackNavigation";
 import { Country } from "../../types/Country";
 import Image from "next/image";
@@ -27,7 +27,7 @@ const Country = ({
                     layout="fill"
                     className={styles.image}
                     priority
-                    alt={`${country} offical flag`}
+                    alt={`${country.name} offical flag`}
                   />
                 </div>
               </div>
@@ -105,7 +105,9 @@ const Country = ({
                       </div>
                       <div className={styles.detail}>
                         <p>
-                          <span className={styles.detailTitle}>Languages: </span>
+                          <span className={styles.detailTitle}>
+                            Languages:{" "}
+                          </span>
                           {country.languages
                             ?.map((language) => language.name)
                             .join(", ")}
@@ -128,7 +130,12 @@ const Country = ({
                             key={border.code}
                             href={`/countries/${border.code}`}
                           >
-                            <a className={styles.btnBorder + " btn btn-light"}>
+                            <a
+                              className={
+                                styles.btnBorder +
+                                " btn btn-light theming-bg-dark"
+                              }
+                            >
                               {border.name}
                             </a>
                           </Link>
