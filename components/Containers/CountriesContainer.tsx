@@ -8,11 +8,11 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
   const [countryList, setCountryList] = useState<Country[] | []>([]);
   let content;
 
-  let partialListOfCountries: Country[];
   useEffect(() => {
+    let partialListOfCountries: Country[];
     if (countries) {
       partialListOfCountries =
-        countries.length > 20 ? countries.slice(0, 20) : countries;
+        countries.length > 12 ? countries.slice(0, 12) : countries;
     }
     setCountryList((prevState) => (prevState = partialListOfCountries));
   }, [countries]);
@@ -26,9 +26,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
       <div className="row">
         <div className="col-12">
           <div className={styles.noCountryFounded}>
-            <p>
-              Sorry, no country founded
-            </p>
+            <p>Sorry, no country founded</p>
           </div>
         </div>
       </div>
@@ -40,16 +38,12 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
         pageStart={0}
         loadMore={handleLoadMore}
         hasMore={true || false}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
+        loader={<div className="loader" key={0}></div>}
       >
         {countryList &&
-          countryList.map((country) => (
-            <div key={country.alpha3Code} className="col-12 col-lg-3">
-              <CountryCard country={country} />
+          countryList.map((country, index) => (
+            <div key={index} className="col-12 col-lg-3">
+              <CountryCard country={country} index={index} />
             </div>
           ))}
       </InfiniteScroll>

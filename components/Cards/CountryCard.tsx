@@ -3,13 +3,21 @@ import Link from "next/link";
 import { Country } from "../../types/Country";
 import styles from "../../styles/CountryCard.module.scss";
 
-const CountryCard = ({ country }: { country: Country }) => {
+const CountryCard = ({
+  country,
+  index,
+}: {
+  country: Country;
+  index: number;
+}) => {
   return (
     <div className={styles.countryCard}>
       <div className={styles.imageWrapper}>
         <Image
           alt={`${country.name} official flag`}
           layout="fill"
+          priority={[0, 1].includes(index) ? true : false}
+          quality={40}
           src={country.flags.png}
         />
       </div>
