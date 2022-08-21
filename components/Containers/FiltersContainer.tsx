@@ -52,6 +52,7 @@ const FiltersContainer = ({
                     </span>
 
                     <input
+                      id="input-filter-country"
                       type="text"
                       className="form-control"
                       placeholder="Search for a country"

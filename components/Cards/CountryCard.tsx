@@ -11,7 +11,7 @@ const CountryCard = ({
   index: number;
 }) => {
   return (
-    <div className={styles.countryCard}>
+    <div className={styles.countryCard+ " country-card"}>
       <div className={styles.imageWrapper}>
         <Image
           alt={`${country.name} official flag`}
@@ -21,7 +21,7 @@ const CountryCard = ({
           src={country.flags.png}
         />
       </div>
-      <div className={styles.detailsWrapper+" theming-bg-dark"}>
+      <div className={styles.detailsWrapper+" theming-bg-dark details-wrapper"}>
         <div className={styles.countryTitleWrapper}>
           <Link
             href={`/countries/${country.alpha3Code.toLowerCase()}`}

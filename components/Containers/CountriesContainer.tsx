@@ -25,7 +25,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
     content = (
       <div className="row">
         <div className="col-12">
-          <div className={styles.noCountryFounded}>
+          <div id="no-country-div" className={styles.noCountryFounded}>
             <p>Sorry, no country founded</p>
           </div>
         </div>
@@ -51,7 +51,7 @@ const CountriesSection = ({ countries }: { countries: Country[] | [] }) => {
   }
 
   return (
-      <div className="container-fluid">{content}</div>
+      <div className="container-fluid" id="countries-container">{content}</div>
   );
 };
 

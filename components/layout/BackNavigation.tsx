@@ -10,7 +10,7 @@ const BackNavigation = () => {
         <div className="col-12">
           <div className={styles.btnWrapper}>
             <button
-              className={styles.btnBack + " btn btn-outline-dark"}
+              className={styles.btnBack + " btn btn-outline-dark navigation-button"}
               onClick={() => router.back()}
             >
               <FaLongArrowAltLeft /> Back
