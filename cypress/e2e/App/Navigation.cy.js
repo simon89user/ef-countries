@@ -15,7 +15,7 @@ describe("Navigation", () => {
     cy.get(".navbar-brand").click();
     cy.url().should("eq", "http://localhost:3000/");
   });
-  it("should navigate from one country page to border country", () => {
+  it("should navigate from one country page to border country page", () => {
     cy.visit("http://localhost:3000/countries/fra");
     cy.contains("Belgium").click();
     cy.url().should("eq", "http://localhost:3000/countries/bel");
