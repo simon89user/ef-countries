@@ -3,8 +3,8 @@ import BackNavigation from "../../components/layout/BackNavigation";
 import { Country } from "../../types/Country";
 import Image from "next/image";
 import styles from "../../styles/[code].module.scss";
-import Head from "next/head";
 import Link from "next/link";
+import logo from "../../public/vercel.svg";
 
 const Country = ({
   country,
@@ -13,6 +13,7 @@ const Country = ({
   country: Country;
   borderCountries: { name: string; code: string }[];
 }) => {
+
   return (
     <>
       <BackNavigation />
@@ -20,7 +21,7 @@ const Country = ({
         <div className="row">
           <div className="col-lg-6">
             <div className="image-wrapper">
-              <Image src={country.flags.png} height={500} width={500} alt="" />
+              <Image src={country.flags?.png ?? logo} height={500} width={500} alt="" />
             </div>
           </div>
           <div className="col-lg-6">
@@ -78,7 +79,7 @@ const Country = ({
                     <div className={styles.detail}>
                       <p>
                         <span className={styles.detailTitle}>Currencies: </span>
-                        {country.currencies.map((currency) => currency.name)}
+                        {country.currencies?.map((currency) => currency.name)}
                       </p>
                     </div>
                     <div className={styles.detail}>
@@ -94,7 +95,7 @@ const Country = ({
               </div>
               <div>
                 {borderCountries.map((border) => (
-                  <Link href={`/countries/${border.code}`}>
+                  <Link key={border.code} href={`/countries/${border.code}`}>
                     <a className="btn btn-outline-primary">{border.name}</a>
                   </Link>
                 ))}
@@ -122,7 +123,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: countryCodes,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -139,6 +140,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const country: Country = await response.json();
+  if (!country) return { notFound: true };
 
   const responseAll = await fetch("https://restcountries.com/v2/all");
 
@@ -150,7 +152,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   let borderCountries: { name: string; code: string }[] = [];
 
-  country.borders.forEach((border: string) => {
+  country.borders?.forEach((border: string) => {
     const countryDetail = countries.filter(
       (country) => country.alpha3Code.toLowerCase() === border.toLowerCase()
     );
