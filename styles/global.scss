@@ -2,15 +2,19 @@
 @import "bootstrap";
 
 body {
-  background-color: $greyBg;
+  background-color: hsl(0, 0%, 98%);
+  a,p,h1,span{
+    color:$darkFont;
+  }
 }
 
 .dark {
   body {
-    background-color: rgb(32 45 54) !important;
+    background-color: hsl(207, 26%, 17%) !important;
     color: white !important;
     a,
     p,
+    h1,
     span {
       color: white !important;
     }
@@ -19,7 +23,7 @@ body {
     .input-group-text,
     input {
       box-shadow: none !important;
-      background-color: #2b3743 !important;
+      background-color: hsl(209, 23%, 22%) !important;
       color: white;
       border:none;
     }

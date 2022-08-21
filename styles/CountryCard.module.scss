@@ -33,9 +33,10 @@
     .details {
       p {
         margin-bottom: 0;
-        color: $lightGrey;
+        color: $darkFont;
+        font-weight: 300;
         .detailTitle {
-          font-weight: 600;
+          font-weight: 500;
           color: $darkFont;
         }
       }

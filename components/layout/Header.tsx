@@ -5,7 +5,6 @@ import styles from "../../styles/header.module.scss";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
-
   return (
     <div className={styles.navWrapper + " theming-bg-dark"}>
       <nav className="navbar">
@@ -17,9 +16,9 @@ const Header = () => {
           </Link>
           <button
             className={
-              theme === "light"
-                ? "btn btn-outline-dark"
-                : "btn btn-outline-light"
+              theme === "dark"
+                ? "btn btn-outline-light"
+                : "btn btn-outline-dark"
             }
             onClick={() => {
               theme === "light" ? setTheme("dark") : setTheme("light");
