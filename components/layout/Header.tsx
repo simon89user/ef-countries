@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { FaMoon } from "react-icons/fa";
-import styles from "../../styles/Header.module.scss";
+import styles from "../../styles/header.module.scss";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
