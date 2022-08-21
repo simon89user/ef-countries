@@ -26,6 +26,7 @@ const Country = ({
                     src={country.flags?.png ?? logo}
                     layout="fill"
                     className={styles.image}
+                    priority
                     alt={`${country} offical flag`}
                   />
                 </div>
@@ -115,13 +116,13 @@ const Country = ({
                 </div>
                 <div className="col-12">
                   <div className={styles.borderWrapper}>
-                    <div className="d-flex flex-row">
+                    <div className="d-flex flex-column flex-lg-row">
                       <div>
                         <p style={{ fontWeight: 600, whiteSpace: "nowrap" }}>
                           Border Countries:{" "}
                         </p>
                       </div>
-                      <div style={{ marginLeft: "1rem" }}>
+                      <div className={styles.borderInnerDiv}>
                         {borderCountries.map((border) => (
                           <Link
                             key={border.code}
