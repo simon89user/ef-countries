@@ -26,6 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This app is E2E tested with the help of Cypress. To use the Cypress GUI, run:
 
 ```bash
+npm run dev
 npm run cypress:open
 ```
 
@@ -44,6 +45,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This project is deployed on Vercel, at [EF Countries](https://ef-countries.vercel.app/)
 
-To deploy it to your own vercel cloud service, login on [VERCEL](https://vercel.com)) and import your github forked repository.
+To deploy it to your own vercel cloud service, login on [VERCEL](https://vercel.com) and import your github forked repository.
 
 To deploy, just push your commits, it would automatically launch the build and deploy.
