@@ -1,5 +1,6 @@
-import React, { JSXElementConstructor, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "../../styles/FiltersContainer.module.scss";
+import { FaSearch } from "react-icons/fa";
 
 const FiltersContainer = ({
   handleFilterSearch,
@@ -10,10 +11,14 @@ const FiltersContainer = ({
 }) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const regionSelectRef = useRef<HTMLSelectElement>(null);
-  
+
   let contentRegion: JSX.Element[] = [];
   regions.forEach((region, index) => {
-    contentRegion.push(<option key={index} value={region}>{region}</option>);
+    contentRegion.push(
+      <option key={index} value={region}>
+        {region}
+      </option>
+    );
   });
 
   const handleChangeFilterInput = (type: string) => {
@@ -37,19 +42,27 @@ const FiltersContainer = ({
         <div className="col-12">
           <div className={styles.filtersContainer}>
             <div className="row">
-              <div className="col-lg-2">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search for a country"
-                  onChange={() => handleChangeFilterInput("country")}
-                  ref={searchInputRef}
-                />
+              <div className="col-lg-4">
+                <div className={styles.countryInput}>
+                  <div className="input-group">
+                    <span className={styles.iconDiv + " input-group-text"}>
+                      <FaSearch />
+                    </span>
+
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Search for a country"
+                      onChange={() => handleChangeFilterInput("country")}
+                      ref={searchInputRef}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-2 offset-lg-8">
+              <div className="col-lg-3 offset-lg-5">
                 <select
                   onChange={() => handleChangeFilterInput("region")}
-                  className="form-select"
+                  className={styles.formSelect+" form-select"}
                   aria-label="Select a region"
                   ref={regionSelectRef}
                 >
