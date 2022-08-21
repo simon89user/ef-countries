@@ -40,12 +40,18 @@ const Home = ({
   return (
     <>
       <Head>
-        <title>EF Countries</title>
+        <title>EF Countries Informations</title>
         <meta
           name="description"
-          content="An amazing webapp providing usefull informations about countries worldwide "
+          content="An amazing web app providing usefull informations about countries worldwide "
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="author" content="Simon Bekishev" />
+        <meta name="robots" content="noindex,nofollow"/>
+        <link
+          rel="canonical"
+          href="https://ef-countries.vercel.app"
+        />
       </Head>
       <FiltersContainer
         handleFilterSearch={handleFilterSearch}

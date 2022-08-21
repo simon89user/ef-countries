@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "../../styles/[code].module.scss";
 import Link from "next/link";
 import logo from "../../public/vercel.svg";
+import Head from "next/head";
 
 const Country = ({
   country,
@@ -13,8 +14,20 @@ const Country = ({
   country: Country;
   borderCountries: { name: string; code: string }[];
 }) => {
+  const title = `${country.name} - EF Countries`;
   return (
     <>
+      <Head>
+        <title>{title}</title>
+        <meta
+          name="description"
+          content={`All usefull informations about ${country.name}: population, capital, currency...`}
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="author" content="Simon Bekishev" />
+        <meta name="robots" content="noindex,nofollow" />
+        <link rel="canonical" href="https://ef-countries.vercel.app" />
+      </Head>
       <BackNavigation />
       <div className="container">
         <div className={styles.countryContainer}>
