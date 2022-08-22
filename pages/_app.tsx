@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import Header from "../components/Layout/Header";
+import Header from "../components/layout/Header";
 import { ThemeProvider } from "next-themes";
 import "../styles/global.scss";
 

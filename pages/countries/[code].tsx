@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import BackNavigation from "../../components/Layout/BackNavigation";
+import BackNavigation from "../../components/layout/BackNavigation";
 import { Country } from "../../types/Country";
 import Image from "next/image";
 import styles from "../../styles/[code].module.scss";
