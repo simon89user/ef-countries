@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import BackNavigation from "../../components/layout/BackNavigation";
+import BackNavigation from "../../components/Layout/BackNavigation";
 import { Country } from "../../types/Country";
 import Image from "next/image";
 import styles from "../../styles/[code].module.scss";
@@ -14,7 +14,9 @@ const Country = ({
   country: Country;
   borderCountries: { name: string; code: string }[];
 }) => {
+  // page title
   const title = `${country.name} - EF Countries`;
+
   return (
     <>
       <Head>
@@ -173,11 +175,12 @@ export const getStaticPaths = async () => {
   const response = await fetch("https://restcountries.com/v2/all");
 
   if (!response.ok) {
-    throw new Error("Fail to fetch Api");
+    throw new Error("Fail to fetch Api route");
   }
 
   let countries: Country[] = await response.json();
 
+  // generating all paths for countries page
   let countryCodes = countries.map(
     (country) => `/countries/${country.alpha3Code.toLowerCase()}`
   );
@@ -189,46 +192,53 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const countryParam = context!.params?.code;
-  if (!countryParam) return { notFound: true };
+  try {
+    const countryParam = context!.params?.code;
+    if (!countryParam) return { notFound: true };
 
-  const response = await fetch(
-    `https://restcountries.com/v2/alpha/${countryParam}`
-  );
+    // get country data
+    const response = await fetch(
+      `https://restcountries.com/v2/alpha/${countryParam}`
+    );
 
-  if (!response.ok) {
+    if (!response.ok) {
+      return { notFound: true };
+    }
+
+    const country: Country = await response.json();
+    if (!country) return { notFound: true };
+
+    // get all countries
+    const responseAll = await fetch("https://restcountries.com/v2/all");
+
+    if (!responseAll.ok) {
+      throw new Error("Fail to fetch Api route");
+    }
+
+    let countries: Country[] = await responseAll.json();
+
+    // generating a props with border countries
+    let borderCountries: { name: string; code: string }[] = [];
+
+    country.borders?.forEach((border: string) => {
+      const countryDetail = countries.filter(
+        (country) => country.alpha3Code.toLowerCase() === border.toLowerCase()
+      );
+      borderCountries.push({
+        name: countryDetail[0].name,
+        code: countryDetail[0].alpha3Code.toLowerCase(),
+      });
+    });
+
+    return {
+      props: {
+        country,
+        borderCountries,
+      },
+    };
+  } catch (error) {
     return { notFound: true };
   }
-
-  const country: Country = await response.json();
-  if (!country) return { notFound: true };
-
-  const responseAll = await fetch("https://restcountries.com/v2/all");
-
-  if (!responseAll.ok) {
-    throw new Error("Fail to fetch Api");
-  }
-
-  let countries: Country[] = await responseAll.json();
-
-  let borderCountries: { name: string; code: string }[] = [];
-
-  country.borders?.forEach((border: string) => {
-    const countryDetail = countries.filter(
-      (country) => country.alpha3Code.toLowerCase() === border.toLowerCase()
-    );
-    borderCountries.push({
-      name: countryDetail[0].name,
-      code: countryDetail[0].alpha3Code.toLowerCase(),
-    });
-  });
-
-  return {
-    props: {
-      country,
-      borderCountries,
-    },
-  };
 };
 
 export default Country;

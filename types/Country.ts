@@ -10,7 +10,7 @@ export type Country = {
   currencies: Currency[];
   languages: language[];
   subregion: string;
-  borders: string[];
+  borders?: string[];
 };
 
 export type Currency = {

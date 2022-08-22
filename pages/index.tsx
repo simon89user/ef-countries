@@ -13,6 +13,8 @@ const Home = ({
   regions: string[] | [];
 }) => {
   const [countriesDisplayed, setCountriesDisplayed] = useState(countries);
+
+  //filtering countries by input or by region select
   const handleFilterSearch = (query: string | null, type: string) => {
     if (!query) {
       return setCountriesDisplayed((prevState) => {
@@ -47,11 +49,8 @@ const Home = ({
         />
         <link rel="icon" href="/favicon.ico" />
         <meta name="author" content="Simon Bekishev" />
-        <meta name="robots" content="noindex,nofollow"/>
-        <link
-          rel="canonical"
-          href="https://ef-countries.vercel.app"
-        />
+        <meta name="robots" content="noindex,nofollow" />
+        <link rel="canonical" href="https://ef-countries.vercel.app" />
       </Head>
       <FiltersContainer
         handleFilterSearch={handleFilterSearch}
@@ -63,30 +62,38 @@ const Home = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("https://restcountries.com/v2/all");
-  if (response.ok) {
-    const countries: Country[] = await response.json();
+  try {
+    // get all countries
+    const response = await fetch("https://restcountries.com/v2/all");
 
-    const regions: string[] = [];
-    countries.forEach((country) => {
-      if (!regions.includes(country.region)) {
-        regions.push(country.region);
-      }
-    });
+    if (response.ok) {
+      const countries: Country[] = await response.json();
 
-    return {
-      props: {
-        countries,
-        regions,
-      },
-    };
-  } else {
-    return {
-      props: {
-        countries: [],
-        regions: [],
-      },
-    };
+      //let's get regions for filters
+      const regions: string[] = [];
+
+      countries.forEach((country) => {
+        if (!regions.includes(country.region)) {
+          regions.push(country.region);
+        }
+      });
+
+      return {
+        props: {
+          countries,
+          regions,
+        },
+      };
+    } else {
+      return {
+        props: {
+          countries: [],
+          regions: [],
+        },
+      };
+    }
+  } catch (error) {
+    return { notFound: true };
   }
 };
 
